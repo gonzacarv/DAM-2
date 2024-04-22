@@ -13,22 +13,24 @@ const pool = mysql.createPool(configMysql);
 
 pool.getConnection((err, connection) => {
     if (err) {
+        console.error(`Error al conectar a la base de datos: ${err.code}`);
         switch (err.code) {
             case 'PROTOCOL_CONNECTION_LOST':
-                console.error('La conexion a la DB se cerró.');
+                console.error('La conexión a la base de datos se cerró.');
                 break;
             case 'ER_CON_COUNT_ERROR':
-                console.error('La base de datos tiene muchas conexiones');
+                console.error('La base de datos tiene muchas conexiones.');
                 break;
             case 'ECONNREFUSED':
-                console.error('La conexion fue rechazada');
+                console.error('La conexión fue rechazada.');
+                break;
+            default:
+                console.error('Error al conectar a la base de datos:', err);
+                break;
         }
     }
-    if (connection) {
-        console.log(connection)
-        connection.release();
-    }
-    return;
+    if (connection) connection.release();
+    console.log('DB connection successful.');
 });
 
 module.exports = pool;

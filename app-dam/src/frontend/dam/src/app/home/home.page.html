@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Inicio
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,11 +9,20 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Consumos</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <ion-button routerLink="/dispositivos/1">Ir a dispositivos</ion-button>
-  </div>
+  <ion-list>
+    <ion-item *ngFor="let consumo of consumos">
+      <ion-label>
+        {{ consumo.nombre }} - Estado: {{ consumo.estado ? 'Encendido' : 'Apagado' }}
+      </ion-label>
+      <ion-toggle [(ngModel)]="consumo.estado" (ionChange)="toggleEstado(consumo)"></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" routerLink="/usuarios">Gestión de Usuarios</ion-button>
+  <ion-button expand="full" routerLink="/grupos">Gestión de Grupos</ion-button>
+  <ion-button expand="full" routerLink="/programacion">Programar Horarios</ion-button>
 </ion-content>
