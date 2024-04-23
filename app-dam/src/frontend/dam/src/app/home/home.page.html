@@ -18,11 +18,12 @@
       <ion-label>
         {{ consumo.nombre }} - Estado: {{ consumo.estado ? 'Encendido' : 'Apagado' }}
       </ion-label>
-      <ion-toggle [(ngModel)]="consumo.estado" (ionChange)="toggleEstado(consumo)"></ion-toggle>
+      <ion-toggle [(ngModel)]="consumo.estado" (ionChange)="toggleEstado(consumo, $event)"></ion-toggle>
     </ion-item>
   </ion-list>
 
-  <ion-button expand="full" routerLink="/usuarios">Gestión de Usuarios</ion-button>
-  <ion-button expand="full" routerLink="/grupos">Gestión de Grupos</ion-button>
-  <ion-button expand="full" routerLink="/programacion">Programar Horarios</ion-button>
+  <!-- Actualiza los routerLink para coincidir con las rutas configuradas en app-routing.module.ts -->
+  <ion-button expand="full" routerLink="/gestion-usuarios">Gestión de Usuarios</ion-button>
+  <ion-button expand="full" routerLink="/gestion-grupos">Gestión de Grupos</ion-button>
+  <ion-button expand="full" routerLink="/programar-horarios">Programar Horarios</ion-button>
 </ion-content>

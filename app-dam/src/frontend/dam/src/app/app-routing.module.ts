@@ -27,8 +27,29 @@ const routes: Routes = [
     loadChildren: () => import('./pages/consumos/consumos.module').then(m => m.ConsumosModule),
     canActivate: [AuthGuard]  // Si necesitas control de acceso
   },
-  
-  // Agrega aquí más rutas según sea necesario
+  {
+    path: 'gestion-usuarios',
+    loadChildren: () => import('./pages/gestion-usuarios/gestion-usuarios.module').then(m => m.GestionUsuariosModule),
+    canActivate: [AuthGuard]  // Si necesitas control de acceso
+  },
+  {
+    path: 'gestion-grupos',
+    loadChildren: () => import('./pages/gestion-grupos/gestion-grupos.module').then(m => m.GestionGruposModule),
+    canActivate: [AuthGuard]  // Si necesitas control de acceso
+  },
+  {
+    path: 'programar-horarios',
+    loadChildren: () => import('./pages/programar-horarios/programar-horarios.module').then(m => m.ProgramarHorariosModule),
+    canActivate: [AuthGuard]  // Si necesitas control de acceso
+  },
+  {
+    path: 'consumo-detalle/:id',
+    loadChildren: () => import('./pages/consumo-detalle/consumo-detalle.module').then(m => m.ConsumoDetalleModule)
+  },
+  {
+    path: 'grupo-detalle/:id',
+    loadChildren: () => import('./pages/grupo-detalle/grupo-detalle.module').then(m => m.GrupoDetalleModule)
+  }
 ];
 
 @NgModule({
